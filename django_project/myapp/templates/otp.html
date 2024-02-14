@@ -1,0 +1,52 @@
+{% extends 'header.html' %}
+{% block content %}
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	
+
+
+	<title>index page</title>
+
+</head>
+<body>
+
+   <center style="margin-top: 185px;">
+<h1>Enter OTP</h1>
+{% if msg %}
+    <center> <b style="color: blue;">{{msg}}</b></center>
+    {%endif%}
+
+<div class="container mt-2">
+  <form method="post" action="{% url 'verify-otp' %}">
+  	{% csrf_token %}
+
+    <table>
+      <tr>
+        <td><input type="hidden" name="otp" value="{{otp}}"></td>
+        <td><input type="hidden" name="email" value="{{email}}"></td>
+      </tr>
+
+
+    </table>
+    
+    <div class="mb-3">
+      <label for="email">Enter OTP</label>
+      <input type="text"  id="text" placeholder="Enter your OTP  " name="uotp">
+    </div>
+     
+    <button  type="submit" value="verify OTP" class="btn btn-primary  " >Verify OTP</button>
+  </form>
+</div>
+</center>	
+
+
+
+
+</body>
+</html>
+{% endblock %}
